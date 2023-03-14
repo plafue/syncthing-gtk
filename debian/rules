@@ -1,10 +1,7 @@
 #!/usr/bin/make -f
 
 %:
-	dh $@ --buildsystem=pybuild
-
-execute_before_dh_auto_build:
-	./generate-locales.sh
+	dh $@ --buildsystem=meson
 
 execute_before_dh_installchangelogs:
 	appstreamcli metainfo-to-news --format=text $(firstword $(wildcard debian/*/usr/share/metainfo/*.xml)) changelog.rst
